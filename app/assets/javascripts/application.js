@@ -17,4 +17,17 @@
 //= require_tree .
 $(function() {
   $(document).foundation();
+  Foundation.utils.image_loaded($('img'), function(){
+    console.log('Image Loaded! :)');
+  });
+  document.addEventListener('page:fetch', function() {
+		$('#main').fadeOut();
+        $('#loading-indicator').fadeIn();
+		$('#loading-indicator h3').fadeIn();
+	});
+  document.addEventListener('page:restore', function() {
+        $('#loading-indicator').fadeIn();
+		$('#loading-indicator').fadeOut();
+		$('#loading-indicator h3').fadeOut();
+	});
 });
